@@ -9,14 +9,12 @@ from jinja2 import FileSystemLoader, Environment
 
 log = get_logger('build_config')
 
-config_path = Path.cwd()
+config_path = Path.cwd() / 'telegraf_config'
+# log.debug(config_path)
 jinja2_path = config_path / 'jinja2'
 output_path = config_path / 'output'
 config_yaml = config_path / 'edit' /'config.yaml'
 resources_yaml = config_path / 'edit' / 'resources.yaml'
-
-log.debug(config_path)
-log.debug(jinja2_path)
 
 
 def render_config(location, monitor_type, config, instances):
@@ -31,21 +29,18 @@ def render_config(location, monitor_type, config, instances):
         f.write(result)
 
 
-with open(resources_yaml, 'r') as f:
-    resources = yaml.safe_load(f.read())
-
-with open(config_yaml, 'r') as f:
-    config = yaml.safe_load(f.read())
-
-print(config['agent'])
-
-for monitor_type, values in resources.items():
-  
-    for location, instances in values.items():
-        # print(monitor_items)
-        # print(monitor_type)
-        # print(config['agent'][monitor_type])
-        print(instances)
+def get_resources_by_yaml():
+    with open(resources_yaml, 'r', encoding='utf-8') as f:
+        return yaml.safe_load(f.read())
         
+
+def get_config_by_yaml():
+    with open(config_yaml, 'r', encoding='utf-8') as f:
+        return yaml.safe_load(f.read())
+
+print(get_resources_by_yaml())
+
+for monitor_type, values in get_resources_by_yaml().items():
+    for location, instances in values.items():
         log.warning(location)
-        render_config(location=location, monitor_type=monitor_type, config=config, instances=instances)
+        render_config(location=location, monitor_type=monitor_type, config=get_config_by_yaml(), instances=instances)

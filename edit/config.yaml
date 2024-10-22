@@ -56,6 +56,27 @@ agent:
         flush_jitter: '5s'
         precision: '0s'
         omit_hostname: 'false'
+    tcp:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+    dns:
+        interval: '60s'
+        round_interval: 'true'
+        metric_batch_size: '10000'
+        metric_buffer_limit: '20000'
+        collection_jitter: '0s'
+        flush_interval: '10s'
+        flush_jitter: '5s'
+        precision: '0s'
+        omit_hostname: 'false'
+
 
 outputs:
     urls: 'https://xxx:8086'

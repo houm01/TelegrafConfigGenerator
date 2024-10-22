@@ -1,5 +1,8 @@
 [[inputs.net_response]]
   protocol = "tcp"
-  address = "localhost:80"
+  address = "{{ tcp_key }}"
   timeout = "1s"
   read_timeout = "1s"
+
+[inputs.net_response.tags]
+  name = "{{ tcp_value['name']}}"

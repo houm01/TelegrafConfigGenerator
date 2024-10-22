@@ -38,3 +38,10 @@ prometheus:
             remark: ''
         http://192.168.10.2:9100/metrics:
             remark: ''
+
+ssl:
+    test01:
+        https://www.baidu.com:
+            name: 'baidu_public'
+            customer: 'baidu'
+            env: 'prod'
