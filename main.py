@@ -51,24 +51,6 @@ snmp_instances = instance_config['instance']['snmp']
 
 # console.print(table)
 
-
-def convert_dict(original_dict):
-    # 初始化目标字典
-    result_dict = {}
-
-    # 遍历原始字典
-    for ip, details in original_dict.items():
-        source = details['source']
-        
-        # 确保目标字典中存在源键
-        if source not in result_dict:
-            result_dict[source] = {}
-        
-        # 将 IP 地址和详细信息添加到目标字典中
-        result_dict[source][ip] = details
-
-    return result_dict
-
 def render_config(source, monitor_type, config, instances):
     jinja2_path = '/data/TelegrafConfigGenerator/jinja2'
     j2_loader = FileSystemLoader(jinja2_path)
