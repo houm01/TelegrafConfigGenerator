@@ -18,7 +18,7 @@
 
 
   [[inputs.snmp.table]]
-    oid = "IF-MIB::ifTable"
+    oid = "IF-MIB::ifXTable"
     name = "interface"
     inherit_tags = ["sysName"]
 
@@ -34,6 +34,10 @@
   [[inputs.snmp.table.field]]
     name = "ifHCOutOctets"
     oid = "IF-MIB::ifHCOutOctets"
+
+  [[inputs.snmp.table.field]]
+    name = "ifAlias"
+    oid = "1.3.6.1.2.1.31.1.1.1.18"
 
 
   [[processors.enum]]

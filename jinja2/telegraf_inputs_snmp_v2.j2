@@ -1,6 +1,6 @@
 [[inputs.snmp]]
-  agents = ["udp://{{ url }}:{{device_info['port']}}"]
-  version = {{ config['inputs'][device_info['snmp_auth']]['version'] }}
-  timeout = "{{ config['inputs'][device_info['snmp_auth']]['timeout'] }}"
-  retries = {{ config['inputs'][device_info['snmp_auth']]['retries'] }}
-  community = "{{ config['inputs'][device_info['snmp_auth']]['community'] }}"
+  agents = ["udp://{{ instance['ip'] }}:{{instance['port']}}"]
+  version = {{ config['inputs'][instance['auth']]['version'] }}
+  timeout = "{{ config['inputs'][instance['auth']]['timeout'] }}"
+  retries = {{ config['inputs'][instance['auth']]['retries'] }}
+  community = "{{ config['inputs'][instance['auth']]['community'] }}"
